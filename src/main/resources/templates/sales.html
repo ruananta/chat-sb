@@ -1,0 +1,123 @@
+<!-- src/main/resources/templates/sales.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>TechIndustry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            /*margin-top: 20px;*/
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        .success-message {
+            color: green;
+            margin-top: 20px;
+            text-decoration: underline;
+        }
+        .form-container {
+            width: 50%;
+            background-color: #f3f3f3;
+            padding: 15px;
+            /*margin-top: 20px;*/
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"],
+        input[type="date"],
+        input[type="text"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; /* Added to fix the box sizing */
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h1>TechIndustry</h1>
+
+<div class="success-message" th:if="${successMessage}" th:text="${successMessage}"></div>
+
+<h2>Продавец: <span style="color: purple" th:text="${sellerName}"></span></h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Сумма</th>
+        <th>ID Продукта</th>
+        <th>Дата Поступления</th>
+        <th>Дата Продажи</th>
+    </tr>
+    <tr th:each="sale : ${sales}">
+        <td th:text="${sale.id}"></td>
+        <td th:text="${sale.amount}"></td>
+        <td th:text="${sale.productId}"></td>
+        <td th:text="${sale.arrivalDate}"></td>
+        <td th:text="${sale.saleDate}"></td>
+    </tr>
+</table>
+<div class="form-container">
+    <form th:action="@{/addSale}" method="post" th:object="${sale}">
+        <div class="form-group">
+            <label for="amount">Сумма:</label>
+            <input type="number" id="amount" name="amount" required />
+        </div>
+        <div class="form-group">
+            <label for="productId">ID Продукта:</label>
+            <input type="number" id="productId" name="productId" required />
+        </div>
+        <div class="form-group">
+            <label for="arrivalDate">Дата Поступления:</label>
+            <input type="date" id="arrivalDate" name="arrivalDate" required />
+        </div>
+        <div class="form-group">
+            <label for="saleDate">Дата Продажи:</label>
+            <input type="date" id="saleDate" name="saleDate" required />
+        </div>
+        <button type="submit">Добавить продажу</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!-- src/main/resources/templates/index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Spring Boot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="form-container">
+    <h1>Chat Spring Boot</h1>
+    <form action="/chat" method="get">
+        <div class="form-group">
+            <label for="author">Введите имя:</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+        <button type="submit">Перейти к чату</button>
+    </form>
+</div>
+</body>
+</html>

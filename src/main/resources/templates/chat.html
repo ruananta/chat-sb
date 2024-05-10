@@ -1,0 +1,45 @@
+<!-- src/main/resources/templates/sales.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Spring Boot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="main-container">
+    <h1>Chat Spring Boot</h1>
+    <h2>Здравствуйте: <span style="color: purple" th:text="${author}"></span></h2>
+    <div class="form-filter">
+        <form th:action="@{/filter}" method="post" class="form-inline">
+            <div class="form-group">
+                <label for="filter">Введите ник:</label>
+                <input type="text" id="filter" name="filter" required/>
+            </div>
+            <button type="submit">Применить фильтр</button>
+        </form>
+    </div>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>Имя</th>
+            <th>Сообщение</th>
+        </tr>
+        <tr th:each="message : ${messages}">
+            <td th:text="${message.id}"></td>
+            <td th:text="${message.author}"></td>
+            <td th:text="${message.text}"></td>
+        </tr>
+    </table>
+    <div class="form-container">
+        <form th:action="@{/add}" method="post">
+            <div class="form-group">
+                <label for="text">Введите сообщение:</label>
+                <input type="text" id="text" name="text" required/>
+            </div>
+            <button type="submit">Отправить сообщение</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
