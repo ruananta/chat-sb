@@ -66,6 +66,7 @@ button {
 
 .form-filter button {
     width: 140px;
+    margin: 5px;
 }
 
 button:hover {

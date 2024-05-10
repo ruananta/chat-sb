@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <title>Chat Spring Boot</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function resetFormAndSubmit(form) {
+            form.filter.value = '';
+            form.submit();
+        }
+    </script>
 </head>
 <body>
 <div class="main-container">
@@ -17,6 +23,7 @@
                 <input type="text" id="filter" name="filter" required/>
             </div>
             <button type="submit">Применить фильтр</button>
+            <button type="button" onclick="resetFormAndSubmit(this.form)">Сбросить фильтр</button>
         </form>
     </div>
     <table>
