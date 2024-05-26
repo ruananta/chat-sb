@@ -1,2 +1,5 @@
 # chat-sb
-Chat Spring Boot
+Тестовое задание на курсах обучения по java. 
+
+Простой чат написанный на Spring Boot.
+
